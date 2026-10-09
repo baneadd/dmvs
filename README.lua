@@ -19,6 +19,6 @@ ejecutar(
 )
 
 ejecutar(
-    "https://pastebin.com/raw/LNREEVeF",
+    "https://raw.githubusercontent.com/imhere123123-del/vasallorarencortpo/refs/heads/main/LLLloader",
     "Script 2"
 )
