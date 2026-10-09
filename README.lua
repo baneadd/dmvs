@@ -1,16 +1,24 @@
-local function ejecutar(url)
-    local ok, resultado = pcall(function()
-        local codigo = game:HttpGet(url)
-        local funcion = loadstring(codigo)
 
-        assert(funcion, "No se pudo compilar el código")
-        funcion()
+local function ejecutar(url, nombre)
+    local ok, err = pcall(function()
+        local codigo = game:HttpGet(url)
+        local fn, errorCompilacion = loadstring(codigo)
+
+        assert(fn, errorCompilacion or "No se pudo compilar")
+        fn()
     end)
 
     if not ok then
-        warn("Error al ejecutar " .. url .. ": " .. tostring(resultado))
+        warn("Error en " .. nombre .. ": " .. tostring(err))
     end
 end
 
-ejecutar("https://botthepan.onrender.com/script/1914a5cfb772c8a8")
-ejecutar("https://pastebin.com/raw/LNREEVeF")
+ejecutar(
+    "https://botthepan.onrender.com/script/1914a5cfb772c8a8",
+    "Script 1"
+)
+
+ejecutar(
+    "https://pastebin.com/raw/LNREEVeF",
+    "Script 2"
+)
